@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>SuperList - Lista de la compra compartida</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🛒 SuperList</h1>
+    <p>Comparte tu lista de la compra en tiempo real</p>
+  </div>
+
+  <div id="joinScreen" class="screen">
+    <h3>📋 Tu lista colaborativa</h3>
+    <p style="margin: 12px 0 8px; color: #4b5563;">Ingresa un código de 6 dígitos o crea una nueva lista</p>
+    <div class="code-input-group">
+      <input type="text" id="joinCodeInput" maxlength="6" placeholder="Código ej: 583291" autocomplete="off">
+      <button id="joinBtn">Unirse</button>
+    </div>
+    <button id="createListBtn" class="secondary" style="width: 100%;">✨ Crear nueva lista</button>
+  </div>
+
+  <div id="listScreen" class="screen hidden">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+      <h3>🛍️ Mi lista</h3>
+      <button id="exitBtn" class="secondary" style="padding: 6px 14px; font-size: 0.8rem;">Salir</button>
+    </div>
+    <div style="background:#eef2ff; padding: 8px 14px; border-radius: 60px; margin: 12px 0; font-size: 0.8rem; text-align: center;">
+      📌 Código: <strong id="displayCode">---</strong>
+    </div>
+
+    <div class="add-item-form">
+      <input type="text" id="newItemName" placeholder="Ej: Leche, Pan, Huevos..." autocomplete="off">
+      <button id="addItemBtn">Añadir</button>
+    </div>
+
+    <ul id="itemsList" class="items-list">
+      <li style="text-align: center; color: #9ca3af;">Cargando productos...</li>
+    </ul>
+
+    <div class="share-area">
+      <div>🔗 Comparte este código con quien quieras</div>
+      <div class="list-code-badge" id="shareCode">------</div>
+      <button id="copyLinkBtn" class="btn-share">📋 Copiar enlace para compartir</button>
+    </div>
+    <div class="status" id="statusMsg">✅ Todos ven los cambios al instante</div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
